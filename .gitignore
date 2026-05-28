@@ -1,0 +1,27 @@
+# Build
+backend/target/
+frontend/dist/
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+
+# Media (large binaries - use script to fetch)
+media/titles/**/feature/**/*.ts
+media/titles/**/preview/**/*.ts
+media/titles/**/feature/**/*.m4s
+!media/titles/**/.gitkeep
+
+# Env
+.env
+.env.local
+
+# Logs
+*.log

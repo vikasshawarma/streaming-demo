@@ -1,0 +1,13 @@
+# Use: ./mvnw spring-boot:run -Dspring-boot.run.profiles=local-h2
+spring:
+  datasource:
+    url: jdbc:h2:mem:streaming;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+
+app:
+  media:
+    base-url: http://localhost:8080/media
+  fallback:
+    intro-url: http://localhost:8080/media/intro/intro.mp4
