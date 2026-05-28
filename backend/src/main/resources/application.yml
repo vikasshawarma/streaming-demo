@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: streaming-demo
+  datasource:
+    url: jdbc:postgresql://localhost:5432/streaming_demo
+    username: streaming
+    password: streaming
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  sql:
+    init:
+      mode: never
+
+server:
+  port: 8080
+
+app:
+  cors:
+    allowed-origins: http://localhost:5173,http://127.0.0.1:5173
+  media:
+    base-url: http://localhost:8081/media
+    signing-secret: change-me-in-production
+    url-ttl-seconds: 3600
+  fallback:
+    # Public Apple HLS samples when local media is not mounted
+    feature-manifest: https://devstreaming-cdn.apple.com/videos/streaming/examples/img_bipbop_adv_example_fmp4/master.m3u8
+    preview-manifest: https://devstreaming-cdn.apple.com/videos/streaming/examples/bipbop_4x3/bipbop_4x3_variant.m3u8
+    intro-url: http://localhost:8081/media/intro/intro.mp4
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local-h2
+  datasource:
+    url: jdbc:h2:mem:streaming;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
